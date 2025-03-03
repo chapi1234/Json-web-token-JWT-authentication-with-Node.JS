@@ -1,4 +1,4 @@
-# AWT Project
+<!-- # AWT Project
 
 This project is a Node.js application that uses Express.js and MongoDB to provide user authentication and basic CRUD operations for posts. The application includes JWT-based authentication and password hashing for security.
 
@@ -134,4 +134,176 @@ Express.js
 Mongoose
 JWT
 bcryptjs
-dotenv
+dotenv -->
+# JWT Project
+
+This project is a Node.js application that uses Express.js and MongoDB to provide user authentication and basic CRUD operations for posts. The application includes JWT-based authentication and password hashing for security.
+
+## Features
+
+- User registration with hashed passwords
+- User login with JWT token generation
+- Protected routes using JWT authentication
+- Basic CRUD operations for posts
+
+## Technologies Used
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT (jsonwebtoken)
+- bcryptjs
+- dotenv
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js installed on your machine
+- MongoDB instance (local or cloud-based, e.g., MongoDB Atlas)
+
+### Installation
+
+1. Clone the repository:
+
+    ```sh
+    git clone https://github.com/yourusername/jwt-project.git
+    cd jwt-project
+    ```
+
+2. Install the dependencies:
+
+    ```sh
+    npm install
+    ```
+
+3. Create a [.env](http://_vscodecontentref_/1) file in the root directory and add the following environment variables:
+
+    ```sh
+    MONGO_DB=your_mongodb_connection_string
+    SECRET_KEY=your_secret_key
+    ```
+
+### Running the Application
+
+1. Start the server:
+
+    ```sh
+    npm start
+    ```
+
+    or
+
+    ```sh
+    nodemon index.js
+    ```
+
+2. The server will start on port 3000. You can access the API at `http://localhost:3000`.
+
+## API Endpoints
+
+### User Authentication
+
+#### Register a New User
+
+- **Endpoint**: `POST /api/user/register`
+- **Description**: Registers a new user with a hashed password.
+- **Request Body**:
+
+    ```json
+    {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "password123"
+    }
+    ```
+
+- **Response**:
+
+    ```json
+    {
+      "message": "Successfully registered",
+      "user": {
+        "_id": "user_id",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "password": "hashed_password"
+      }
+    }
+    ```
+
+#### Login a User
+
+- **Endpoint**: `POST /api/user/login`
+- **Description**: Logs in a user and returns a JWT token.
+- **Request Body**:
+
+    ```json
+    {
+      "email": "john@example.com",
+      "password": "password123"
+    }
+    ```
+
+- **Response**:
+
+    ```json
+    {
+      "message": "Logged in!",
+      "token": "jwt_token"
+    }
+    ```
+
+### Posts
+
+#### Get All Posts
+
+- **Endpoint**: `GET /api/posts`
+- **Description**: Retrieves all posts. This route is protected and requires a valid JWT token.
+- **Headers**:
+
+    ```json
+    {
+      "auth-token": "jwt_token"
+    }
+    ```
+
+- **Response**:
+
+    ```json
+    {
+      "posts": {
+        "title": "my first post",
+        "description": "random data you shouldn't access"
+      }
+    }
+    ```
+
+### Project Structure
+
+JWT/
+├── routes/
+│   ├── auth.js
+│   ├── [posts.js](http://_vscodecontentref_/1)
+│   └── verifytoken.js
+├── models/
+│   └── User.js
+├── validation/
+│   └── [index.js](http://_vscodecontentref_/2)
+├── .env
+├── [index.js](http://_vscodecontentref_/3)
+├── [package.json](http://_vscodecontentref_/4)
+└── README.md
+
+### License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+### Acknowledgments
+
+- Express.js
+- Mongoose
+- JWT
+- bcryptjs
+- dotenv
