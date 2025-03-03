@@ -281,7 +281,7 @@ This project is a Node.js application that uses Express.js and MongoDB to provid
     ```
 
 ### Project Structure
-
+```sh
 JWT/
 ├── routes/
 │   ├── auth.js
